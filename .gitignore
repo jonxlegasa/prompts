@@ -1,0 +1,10 @@
+# Generated stow package contents (build artifacts from compose.sh)
+# These are rebuilt from src/ every time you run setup.sh
+claude/.claude/CLAUDE.md
+claude/.claude/commands/
+opencode/.config/opencode/AGENTS.md
+opencode/.config/opencode/agents/
+
+.beads
+.claude
+.opencode
