@@ -35,6 +35,8 @@ ls -la ~/.config/opencode/agents/my-new-skill.md
 
 ## Skill format
 
+Check out dave shap [Mission Instructions Repo](https://github.com/daveshap/ChatGPT_Custom_Instructions)
+
 Skills follow a standard prompt structure:
 
 ```markdown
@@ -53,3 +55,5 @@ Background and when to use this skill.
 # Instructions
 1. Step-by-step execution plan
 ```
+
+
