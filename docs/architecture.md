@@ -20,7 +20,11 @@ All prompts live once in `src/`:
 src/
 ├── MISSION.md        # the main system prompt
 └── skills/           # shared command/agent prompts
+    ├── baseline-ui.md
     ├── doc-sync.md
+    ├── fixing-accessibility.md
+    ├── fixing-metadata.md
+    ├── fixing-motion-performance.md
     ├── generate-beads.md
     ├── implement-beads.md
     └── sync-edits.md

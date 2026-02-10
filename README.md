@@ -69,6 +69,10 @@ The generated files inside the stow packages are **not** tracked in git. They ar
 
 Only `src/` is the source of truth. On a fresh clone, run `bash setup.sh` to rebuild everything.
 
+## UI Skills
+
+The `baseline-ui`, `fixing-accessibility`, `fixing-metadata`, and `fixing-motion-performance` skills are from [UI Skills](https://www.ui-skills.com/).
+
 ## Docs
 
 See [docs/](docs/) for more detail:
