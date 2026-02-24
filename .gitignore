@@ -5,6 +5,38 @@ claude/.claude/commands/
 opencode/.config/opencode/AGENTS.md
 opencode/.config/opencode/agents/
 
+# Local tool state
 .beads
 .claude
 .opencode
+
+# Secrets and credentials — NEVER commit these
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+*.crt
+*.cer
+*.secret
+**/credentials.json
+**/service-account*.json
+**/token.json
+**/*_rsa
+**/*_ed25519
+**/*_ecdsa
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Editor / IDE
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+*.sublime-workspace

@@ -8,6 +8,7 @@ When editing plans, documents, or notes together with the user:
 - **ALWAYS include the version number** in the model tag (e.g., `@claude-haiku-4.5`, NOT `@claude-haiku`). Tags without version numbers are ambiguous and must not be used.
 - If the model name is unknown, use `@unknown-agent`
 - **NEVER use HTML/markdown comments (`<!-- -->`) for collaborative comments.** Always use plain `@tag:` prefixed text.
+- **Write Permission:** Agents MUST NOT write to or append collaborative documents (plans, notes, shared files) unless the `@architect` explicitly instructs them to. The architect controls when agents contribute to the document. Being @-mentioned in the file does not grant write permission — only a direct instruction from the architect in the session does.
 
 ## Beads Workflow
 
@@ -38,3 +39,14 @@ bd sync               # Sync with git
   - If model unknown: `@unknown-agent`
   - **NEVER use HTML/markdown comments (`<!-- -->`)** — always use plain `@tag:` prefixed text.
 - DO NOT COMMIT BEFORE THE USER'S REVIEW.
+- **CITATION REQUIREMENT (ALWAYS ACTIVE):** Every Edit, Write, code block, or suggestion MUST be preceded by a **What** (one-line summary), **Why** (reasoning), and **Source** (file path with line numbers, URL, plan reference, or `model knowledge — not verified`). This applies even when skills are active. No exceptions. No change is ever obvious enough to skip.
+
+## Why Citations Matter (Non-Negotiable)
+
+Citations are **traceability infrastructure**, not formatting overhead.
+
+- As projects scale (more subagents, larger codebases, intricate prompts), citations are the only way to debug where information came from and whether to trust it.
+- Uncited subagent results are especially dangerous: the main agent didn't verify the data itself, so without `[source: ... — found via exploration]` there is zero traceability.
+- "It's just informational" is **NEVER** a reason to skip citations. Informational claims are exactly where hallucinations hide.
+- NEVER pass through subagent findings as bare tables or lists. Always attribute with `[source: <url or path> — found via <agent-type> agent]` or similar.
+- When something breaks, citations are the breadcrumb trail. Without them, neither the user nor the AI can trace a decision back to its origin.
