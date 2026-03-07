@@ -1,0 +1,111 @@
+{
+  "hooks": {
+    "PreCompact": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bd prime"
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat $HOME/.claude/output-styles/cited.md"
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bd prime"
+          }
+        ]
+      },
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat $HOME/.claude/output-styles/cited.md"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "CITATION FINAL CHECK — cited.md self-check rule. The assistant is about to stop. Context: $ARGUMENTS\n\nPerform the cited.md self-check: 'After completing a set of changes, review your output. For every Edit/Write tool call, verify there is a What/Why/Source block preceding it AND a Result block following it. If any is missing, add it retroactively before moving on.'\n\nIf all edits appear properly cited (or no edits were made), return {\"ok\": true}.\nIf any edits are missing citations, return {\"ok\": false, \"reason\": \"Self-check failed: one or more Edit/Write/Bash calls are missing What/Why/Source or Result citation blocks. Go back and add them before stopping.\"}."
+          }
+        ]
+      }
+    ],
+    "SubagentStart": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat $HOME/.claude/output-styles/cited.md"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "CITATION CHECK FOR SUBAGENT — cited.md rule 10: 'Subagent results need citations.' The subagent is about to stop. Context: $ARGUMENTS\n\nVerify the subagent cited all Edit/Write/Bash calls with What/Why/Source blocks, and that results passed to the main agent have source attribution (e.g. [source: path/to/file:L42 — found via exploration]).\n\nIf citations are missing, return {\"ok\": false, \"reason\": \"Subagent must cite all changes with What/Why/Source blocks per cited.md rule 10.\"}.\nOtherwise return {\"ok\": true}."
+          }
+        ]
+      }
+    ],
+    "TaskCompleted": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "prompt",
+            "prompt": "CITATION COMPLETION AUDIT — cited.md rules. A task has completed. Context: $ARGUMENTS\n\nFinal audit: did ALL Edit/Write/Bash tool calls during this task have What/Why/Source citation blocks before them AND Result blocks after them as required by cited.md? No orphan edits, no orphan suggestions.\n\nIf any are missing, return {\"ok\": false, \"reason\": \"Task completed but citation audit failed. Missing What/Why/Source or Result blocks on one or more edits.\"}.\nOtherwise return {\"ok\": true}."
+          }
+        ]
+      }
+    ],
+    "TeammateIdle": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat $HOME/.claude/output-styles/cited.md"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "matcher": "",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat $HOME/.claude/output-styles/cited.md"
+          }
+        ]
+      }
+    ]
+  },
+  "outputStyle": "cited"
+}
